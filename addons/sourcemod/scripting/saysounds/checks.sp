@@ -57,6 +57,12 @@ public IsGameSound (const String:file[])
 		return false;
 }
 
+bool:IsSpecialSound(String:name[])
+{
+	return (StrEqual(name, "JoinSound", false) || StrEqual(name, "ExitSound", false)
+		|| strncmp(name, "STEAM_", 6, false) == 0);
+}
+
 public IsValidClient (client)
 {
 	if (client <= 0 || client > MaxClients || !IsClientConnected(client) || IsFakeClient(client) || IsClientReplay(client) || IsClientSourceTV(client))

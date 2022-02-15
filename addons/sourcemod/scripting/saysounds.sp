@@ -1489,12 +1489,12 @@ public Action:Command_Say(client, const String:command[], argc){
 		new bool:trigfound;
 		decl String:buffer[255];
 
-
-		do{
+		do {
 			KvGetSectionName(listfile, buffer, sizeof(buffer));
 			adult = bool:KvGetNum(listfile, "adult",0);
-			if ((sentence && StrContains(speech[startidx],buffer,false) >= 0) ||
-				(strcmp(speech[startidx],buffer,false) == 0)){
+
+			if (!IsSpecialSound(buffer) && (sentence && StrContains(speech[startidx], buffer, false) >= 0
+					|| strcmp(speech[startidx], buffer, false) == 0)) {
 
 					Submit_Sound(client,buffer);
 					trigfound = true;

@@ -103,9 +103,7 @@ public Sound_Menu(client, sound_types:types)
 		do
 		{
 			KvGetSectionName(listfile, buffer, sizeof(buffer));
-			if (!StrEqual(buffer, "JoinSound") &&
-				!StrEqual(buffer, "ExitSound") &&
-				strncmp(buffer,"STEAM_",6,false))
+			if (!IsSpecialSound(buffer))
 			{
 				if (!KvGetNum(listfile, "actiononly", 0) &&
 					KvGetNum(listfile, "enable", 1))
